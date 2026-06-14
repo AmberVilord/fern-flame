@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fern & Flame | Cart</title>
+    <meta
+      name="description"
+      content="Review the items in your Fern & Flame cart before completing your order."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="index.html" aria-label="Fern & Flame home">
+          <span class="brand-mark" aria-hidden="true">✦</span>
+          <span>
+            <strong>Fern & Flame</strong>
+            <small>Fine ritual objects and bespoke offerings</small>
+          </span>
+        </a>
+
+        <nav class="site-nav" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="sales.html">Sales</a>
+          <a href="events.html">Events</a>
+          <a class="is-active" href="cart.html">Cart</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="page-hero section">
+          <div class="page-intro">
+            <p class="eyebrow">Cart</p>
+            <h1>Your selected offerings.</h1>
+            <p class="lead">
+              Review the pieces you’ve added before completing your ritual-ready order.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="sales.html">Continue shopping</a>
+              <button class="button button-secondary" id="clear-cart" type="button">Clear cart</button>
+            </div>
+          </div>
+
+          <aside class="page-aside hero-card">
+            <div>
+              <p class="card-label">Order status</p>
+              <h2>Stored across every page.</h2>
+              <p>
+                Your selections remain in the cart as you move through the boutique, so the collection stays intact.
+              </p>
+            </div>
+            <div class="hero-price">
+              <span>Ready</span>
+              <strong>Now</strong>
+            </div>
+          </aside>
+        </section>
+
+        <section class="section cart-section">
+          <div class="cart-panel" aria-live="polite">
+            <div class="cart-summary">
+              <div>
+                <span class="cart-label">Items</span>
+                <strong id="cart-count">0</strong>
+              </div>
+              <div>
+                <span class="cart-label">Total</span>
+                <strong id="cart-total">$0</strong>
+              </div>
+            </div>
+            <ul id="cart-items" class="cart-items">
+              <li class="empty-cart">Your cart is empty. Add a few treasures from the sales section.</li>
+            </ul>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
