@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap");
+
 :root {
   color-scheme: dark;
   --bg: #07110c;
@@ -26,13 +28,73 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  font-family: "Playfair Display", Georgia, serif;
   color: var(--text);
   background:
-    linear-gradient(180deg, rgba(4, 9, 6, 0.72), rgba(4, 9, 6, 0.88)),
+    linear-gradient(180deg, rgba(4, 9, 6, 0.65), rgba(4, 9, 6, 0.79)),
     radial-gradient(circle at top left, rgba(79, 119, 85, 0.26), transparent 28%),
     radial-gradient(circle at top right, rgba(199, 161, 77, 0.2), transparent 24%),
     url("https://images.wallpaperscraft.com/image/single/fern_bush_green_168167_3840x2160.jpg") center center / cover fixed no-repeat;
+}
+
+body.enter-page {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #020403;
+}
+
+body.enter-page::before {
+  display: none;
+}
+
+.enter-screen {
+  width: 100vw;
+  height: 100vh;
+}
+
+.enter-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.enter-image {
+  display: block;
+  width: auto;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  object-position: center center;
+  border-radius: 0;
+  box-shadow: none;
+  filter: brightness(0.72) saturate(0.88) contrast(1.04);
+}
+
+.enter-hotspot {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 2in;
+  height: 1in;
+  display: block;
+  text-decoration: none;
+  color: transparent;
+  background: transparent;
+  cursor: pointer;
+  transform: translateX(-50%);
+}
+
+.enter-hotspot:hover,
+.enter-hotspot:focus-visible {
+  outline: none;
+  background: rgba(7, 17, 12, 0.01);
 }
 
 body::before {
@@ -48,9 +110,9 @@ body::before {
 }
 
 .page-shell {
-  width: min(1160px, calc(100% - 32px));
-  margin: 0 auto;
-  padding: 20px 0 38px;
+  width: min(980px, calc(100% - 20px));
+  margin: 0;
+  padding: 80px 10px 20px;
 }
 
 .site-header,
@@ -58,21 +120,27 @@ body::before {
 .cart-panel,
 .hero-card {
   backdrop-filter: blur(22px);
-  background: linear-gradient(180deg, rgba(18, 29, 21, 0.86), rgba(7, 13, 9, 0.95));
-  border: var(--border-width) solid var(--border);
+  background: linear-gradient(180deg, rgba(7, 17, 12, 0.92), rgba(7, 17, 12, 0.66));
+  border: 0;
   box-shadow: var(--shadow);
 }
 
 .site-header {
-  position: sticky;
-  top: 12px;
-  z-index: 20;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
   padding: 18px 20px;
-  border-radius: 24px;
+  border-radius: 0;
+  background: linear-gradient(180deg, rgba(6, 11, 7, 0.99), rgba(6, 11, 7, 0.99));
+  backdrop-filter: none;
+  isolation: isolate;
 }
 
 .brand {
@@ -89,15 +157,17 @@ body::before {
 .hero-card h2,
 .product-copy h3,
 .event-card h3 {
-  font-family: "Baskerville", "Iowan Old Style", Georgia, serif;
+  font-family: "Playfair Display", Georgia, serif;
   letter-spacing: 0.015em;
 }
 
 .brand strong {
   display: block;
-  font-size: 1.12rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
+  font-family: "Great Vibes", cursive;
+  font-size: 2rem;
+  line-height: 0.9;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 .brand small {
@@ -109,15 +179,27 @@ body::before {
 }
 
 .brand-mark {
+  position: relative;
   display: grid;
   place-items: center;
-  width: 46px;
-  height: 46px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #f4e9c3, var(--gold) 56%, #7f5b16 100%);
-  color: #102013;
+  color: transparent;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 28% 26%, rgba(255, 248, 214, 0.95), rgba(244, 233, 195, 0.45) 22%, transparent 23%),
+    radial-gradient(circle at 50% 42%, #f5e8bb, var(--gold) 58%, #8f681d 100%);
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12), 0 0 28px rgba(199, 161, 77, 0.22);
   font-size: 1.08rem;
+}
+
+.brand-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
 }
 
 .site-nav {
@@ -130,7 +212,7 @@ body::before {
 .site-nav a,
 .button,
 .add-to-cart {
-  border-radius: 999px;
+  border-radius: 0;
   text-decoration: none;
   transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
 }
@@ -164,14 +246,14 @@ body::before {
 }
 
 .section {
-  margin-top: 24px;
+  margin-top: 10px;
   padding: 32px;
-  border-radius: 30px;
+  border-radius: 0;
 }
 
 .page-hero {
   display: grid;
-  gap: 18px;
+  gap: 10px;
   grid-template-columns: minmax(0, 1fr) minmax(260px, 0.62fr);
   align-items: stretch;
 }
@@ -179,16 +261,22 @@ body::before {
 .page-intro,
 .page-aside {
   padding: 28px;
-  border-radius: 28px;
-  border: var(--border-width) solid var(--border);
-  background: linear-gradient(180deg, rgba(20, 31, 22, 0.78), rgba(8, 13, 9, 0.94));
-  box-shadow: var(--shadow);
+  border-radius: 0;
+  background:
+    radial-gradient(circle at top left, rgba(79, 119, 85, 0.22), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(199, 161, 77, 0.08), transparent 26%),
+    linear-gradient(180deg, rgba(7, 17, 12, 0.96), rgba(7, 17, 12, 0.42));
+  box-shadow:
+    0 30px 72px rgba(0, 0, 0, 0.52),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .page-intro h1 {
   margin: 0 0 14px;
-  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  font-size: clamp(1.44rem, 3vw, 2.7rem);
   line-height: 0.96;
+  color: var(--gold-soft);
+  text-shadow: 0 0 22px rgba(199, 161, 77, 0.18);
 }
 
 .page-intro p {
@@ -259,40 +347,48 @@ body::before {
   align-items: center;
   justify-content: center;
   min-height: 48px;
-  padding: 0 20px;
-  border: 1px solid rgba(231, 207, 147, 0.28);
-  font-weight: 600;
-  letter-spacing: 0.05em;
+  padding: 0 22px;
+  border: 1px solid rgba(231, 207, 147, 0.34);
+  border-radius: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   cursor: pointer;
+  font-family: "Playfair Display", Georgia, serif;
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
 }
 
 .button-primary,
 .add-to-cart {
   color: #102013;
-  background: linear-gradient(135deg, #f4e7bc, var(--gold));
+  background: linear-gradient(180deg, #f8ebc2 0%, #ddb762 100%);
 }
 
 .button-secondary {
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.03);
+  color: var(--gold-soft);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(231, 207, 147, 0.24);
 }
 
 .hero-card {
-  border-radius: 26px;
+  border-radius: 0;
   padding: 26px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 100%;
   background:
-    radial-gradient(circle at top right, rgba(231, 207, 147, 0.18), transparent 28%),
-    linear-gradient(180deg, rgba(17, 28, 20, 0.92), rgba(7, 12, 8, 0.96));
+    radial-gradient(circle at top right, rgba(79, 119, 85, 0.22), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(199, 161, 77, 0.08), transparent 32%),
+    linear-gradient(180deg, rgba(7, 17, 12, 0.96), rgba(7, 17, 12, 0.5));
 }
 
 .hero-card h2,
 .section-heading h2 {
   margin: 0 0 12px;
-  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  font-size: clamp(1.44rem, 2.4vw, 2.16rem);
+  color: var(--gold-soft);
 }
 
 .hero-price {
@@ -302,7 +398,7 @@ body::before {
   gap: 16px;
   margin-top: 20px;
   padding-top: 20px;
-  border-top: var(--border-width) solid rgba(231, 207, 147, 0.16);
+  background: linear-gradient(180deg, rgba(18, 29, 21, 0.92), rgba(7, 13, 9, 0.98));
 }
 
 .hero-price span,
@@ -311,38 +407,48 @@ body::before {
 }
 
 .hero-price strong {
-  font-family: "Baskerville", "Iowan Old Style", Georgia, serif;
+  font-family: "Playfair Display", Georgia, serif;
   font-size: 3rem;
-  line-height: 1;
+  color: var(--gold-soft);
+  background: none;
+  overflow: visible;
 }
 
 .section-accent {
   background:
-    linear-gradient(180deg, rgba(14, 23, 17, 0.9), rgba(8, 14, 9, 0.96)),
-    radial-gradient(circle at 100% 0%, rgba(79, 119, 85, 0.16), transparent 34%);
+    radial-gradient(circle at 50% 0%, rgba(79, 119, 85, 0.12), transparent 22%),
+    linear-gradient(180deg, rgba(7, 17, 12, 0.92), rgba(7, 17, 12, 0.56));
 }
 
 .product-grid,
 .event-list {
   display: grid;
-  gap: 18px;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .product-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 24px;
+}
+
+.event-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .product-card,
 .event-card {
   overflow: hidden;
-  border-radius: 24px;
-  border: var(--border-width) solid rgba(231, 207, 147, 0.14);
-  background: linear-gradient(180deg, rgba(21, 32, 24, 0.9), rgba(8, 13, 9, 0.97));
+  border-radius: 0;
+  background:
+    radial-gradient(circle at top right, rgba(79, 119, 85, 0.12), transparent 24%),
+    linear-gradient(180deg, rgba(7, 17, 12, 0.9), rgba(7, 17, 12, 0.54));
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .product-art {
-  min-height: 176px;
+  min-height: 220px;
   background-size: cover;
   position: relative;
 }
@@ -351,8 +457,11 @@ body::before {
   content: "";
   position: absolute;
   inset: 18px;
-  border: var(--border-width) solid rgba(255, 255, 255, 0.12);
   border-radius: 18px;
+  border: 1px solid rgba(231, 207, 147, 0.28);
+  box-shadow:
+    0 16px 34px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.42);
 }
 
 .product-art-1 {
@@ -378,6 +487,10 @@ body::before {
   padding: 20px;
 }
 
+.product-copy {
+  background: linear-gradient(180deg, rgba(7, 17, 12, 0.22), rgba(7, 17, 12, 0.5));
+}
+
 .product-copy h3,
 .event-card h3 {
   margin: 0 0 10px;
@@ -398,12 +511,12 @@ body::before {
 
 .events-section {
   background:
-    radial-gradient(circle at 15% 15%, rgba(79, 119, 85, 0.14), transparent 24%),
-    linear-gradient(180deg, rgba(13, 22, 16, 0.92), rgba(8, 14, 9, 0.96));
+    radial-gradient(circle at 15% 15%, rgba(79, 119, 85, 0.18), transparent 24%),
+    radial-gradient(circle at 85% 10%, rgba(199, 161, 77, 0.08), transparent 26%),
+    linear-gradient(180deg, rgba(7, 17, 12, 0.92), rgba(7, 17, 12, 0.56));
 }
 
 .event-list {
-  margin-top: 22px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
@@ -412,21 +525,17 @@ body::before {
 }
 
 .cart-panel {
-  margin-top: 22px;
+  margin-top: 10px;
   padding: 24px;
-  border-radius: 26px;
-}
-
-.cart-summary {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-  margin-bottom: 16px;
+  border-radius: 0;
+  background:
+    radial-gradient(circle at top left, rgba(79, 119, 85, 0.14), transparent 28%),
+    linear-gradient(180deg, rgba(7, 17, 12, 0.92), rgba(7, 17, 12, 0.56));
 }
 
 .cart-summary div {
   padding: 18px;
-  border-radius: 20px;
+  border-radius: 0;
   background: rgba(255, 255, 255, 0.03);
   border: var(--border-width) solid rgba(231, 207, 147, 0.12);
 }
@@ -434,7 +543,7 @@ body::before {
 .cart-summary strong {
   display: block;
   margin-top: 4px;
-  font-family: "Baskerville", "Iowan Old Style", Georgia, serif;
+  font-family: "Playfair Display", Georgia, serif;
   font-size: 2.15rem;
 }
 
@@ -458,6 +567,33 @@ body::before {
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 22px;
+}
+
+.checkout-panel {
+  padding: 18px;
+  border-radius: 0;
+  border: var(--border-width) solid rgba(231, 207, 147, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+.checkout-panel h3 {
+  margin: 0 0 8px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.1rem;
+}
+
+.checkout-panel p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.checkout-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
 }
 
 .cart-items li:first-child {
@@ -512,6 +648,7 @@ body::before {
 
   .hero-copy h1 {
     font-size: clamp(2.2rem, 11vw, 3.4rem);
+    font-family: "Playfair Display", Georgia, serif;
   }
 
   .hero-actions,
